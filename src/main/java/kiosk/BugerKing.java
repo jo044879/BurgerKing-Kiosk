@@ -26,7 +26,4 @@ public class BugerKing {
         this.price = price;
     }
 
-    public boolean equals(BugerKing nameCk) {
-        return name.equals(nameCk.getName());
-    }
 }
