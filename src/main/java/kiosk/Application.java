@@ -59,10 +59,10 @@ public class Application {
             userInput = scanner.nextInt();
 
 
-            if(userInput == 1) BugerOrder(buger, baskets);
-            else if (userInput == 2) SideOrder(side, baskets);
-            else if (userInput == 3) DrinkOrder(drink, baskets);
-            else if (userInput == 4) BasketCheck(baskets);
+            if(userInput == 1) BugerOrder(buger, baskets, scanner);
+            else if (userInput == 2) SideOrder(side, baskets, scanner);
+            else if (userInput == 3) DrinkOrder(drink, baskets, scanner);
+            else if (userInput == 4) BasketCheck(baskets, scanner);
             else if (userInput == 5) break;
         }
 
@@ -106,7 +106,7 @@ public class Application {
 
     }
 
-    static void BugerOrder(ArrayList<BugerKing> b, ArrayList<ShoppingBasket> item){
+    static void BugerOrder(ArrayList<BugerKing> b, ArrayList<ShoppingBasket> item, Scanner scanner){
 
         System.out.println("=====햄버거 메뉴=====");
         int i = 0;
@@ -115,7 +115,6 @@ public class Application {
             i++;
         }
         System.out.println("메뉴선택 (0을 선택 시 홈으로): ");
-        Scanner scanner = new Scanner(System.in);//Syste,.in 표준 입력 장치에서 읽어 오겠다.
         int userInput;
         userInput = scanner.nextInt();
 
@@ -143,7 +142,7 @@ public class Application {
 
     }
 
-    static void SideOrder(ArrayList<BugerKing> s, ArrayList<ShoppingBasket> item){
+    static void SideOrder(ArrayList<BugerKing> s, ArrayList<ShoppingBasket> item, Scanner scanner){
 
         System.out.println("=====사이드 메뉴=====");
         int i = 0;
@@ -154,7 +153,6 @@ public class Application {
         System.out.println("메뉴선택 (0을 선택 시 홈으로): ");
 
 
-        Scanner scanner = new Scanner(System.in);//Syste,.in 표준 입력 장치에서 읽어 오겠다.
         int userInput;
 
         userInput = scanner.nextInt();
@@ -186,7 +184,7 @@ public class Application {
         }
     }
 
-    static void DrinkOrder(ArrayList<BugerKing> d, ArrayList<ShoppingBasket> item){
+    static void DrinkOrder(ArrayList<BugerKing> d, ArrayList<ShoppingBasket> item, Scanner scanner){
         System.out.println("=====음료 메뉴=====");
         int i = 0;
         for(BugerKing drinks : d){
@@ -194,7 +192,6 @@ public class Application {
             i++;
         }
         System.out.println("메뉴선택 (0을 선택 시 홈으로): ");
-        Scanner scanner = new Scanner(System.in);
         int userInput;
 
         userInput = scanner.nextInt();
@@ -225,7 +222,7 @@ public class Application {
     }
 
 
-    static void BasketCheck(ArrayList<ShoppingBasket> item){
+    static void BasketCheck(ArrayList<ShoppingBasket> item, Scanner scanner){
         if(item.isEmpty()){//item.size() == 0 이렇게 작성했고 intelliJ를 통해서 간략화 시킴
             System.out.println("아무것도 들어가 있지 않습니다. 홈으로 돌아갑니다.");
             return;
@@ -242,19 +239,18 @@ public class Application {
         System.out.println("3. 삭제하기");
         System.out.println("총 가격 "+totalCost);
         //바로 수량 주문하기 함수 가져와서 지우고 수량 조절 ㄱㄱ
-        Scanner scanner = new Scanner(System.in);
         int userInput;
         userInput = scanner.nextInt();
 
         if(userInput == 1) {
             System.out.println("주문 되었습니다.");
         }
-        else if (userInput == 2) QuantityControl(item);
-        else if(userInput == 3) DeleteOrder(item);
+        else if (userInput == 2) QuantityControl(item, scanner);
+        else if(userInput == 3) DeleteOrder(item, scanner);
             //1. 주문 2 수량 3 삭제
     }
 
-    static void QuantityControl(ArrayList<ShoppingBasket> item){
+    static void QuantityControl(ArrayList<ShoppingBasket> item,Scanner scanner){
         int totalCost = 1;
 
         System.out.println("===== 수량 조절하기 =====");
@@ -267,7 +263,6 @@ public class Application {
 
         System.out.println("수량을 조절할 메뉴 번호를 선택하세요 (0을 선택 시 홈으로): ");
 
-        Scanner scanner = new Scanner(System.in);//Syste,.in 표준 입력 장치에서 읽어 오겠다.
 
         int userInput = scanner.nextInt();
 
@@ -295,7 +290,7 @@ public class Application {
     }
 
 
-    static void DeleteOrder(ArrayList<ShoppingBasket> item){
+    static void DeleteOrder(ArrayList<ShoppingBasket> item, Scanner scanner){
         int totalCost = 1;
         System.out.println("===== 삭제하기 =====");
         System.out.println("현재 장바구니");
@@ -305,7 +300,6 @@ public class Application {
         }
         System.out.println(" ");
 
-        Scanner scanner = new Scanner(System.in);//Syste,.in 표준 입력 장치에서 읽어 오겠다.
         System.out.println("삭제할 메뉴 번호를 선택하세요 (0을 선택 시 홈으로): ");
         int userInput = scanner.nextInt();
         int index = userInput - 1;
